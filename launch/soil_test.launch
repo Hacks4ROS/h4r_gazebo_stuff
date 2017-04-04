@@ -1,0 +1,17 @@
+<launch>
+   <arg name="paused" value="true"/>
+   <include file="$(find h4r_rapid_robot_xacros)/launch/spawn.launch" >  
+          <arg name="model_file" value="$(find h4r_gazebo_stuff)/def/soil0.xacro" />
+          <arg name="model_name" value="soil_test" />
+          <arg name="posX" value="0" />
+          <arg name="posY" value="0" />
+          <arg name="posZ" value="0" />
+        
+          <arg name="yaw"          value="0" />
+          <arg name="model_params" value="static:=true soil_length:=5.5 soil_width:=6" />
+	</include> 
+	
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+   <arg name="paused" value="$(arg paused)"/>	  
+  </include>	
+</launch>

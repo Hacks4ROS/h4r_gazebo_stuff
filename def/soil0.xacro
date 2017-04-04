@@ -1,0 +1,36 @@
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+	
+<xacro:include filename="$(find h4r_rapid_robot_xacros)/def/rapid_robot.xacro"/>
+        
+<xacro:rr_static />
+
+<link name="base_link" />
+
+<xacro:arg name="soil_length" default="1" />
+<xacro:arg name="soil_width"  default="1" />
+<xacro:arg name="soil_height" default="0.01" />
+<xacro:arg name="soil_mu1" default="0.2" />
+<xacro:arg name="soil_mu2" default="0.2" />
+
+<xacro:property name="soil_density" value="1400" />
+<xacro:property name="soil_weight" value="${ $(arg soil_length) * $(arg soil_width) * $(arg soil_height) * soil_density}"/>	
+
+	
+	
+<xacro:rr_joint_fixed parent="base_link" child="soil_plane" />
+
+<rr_simple_box name="soil_plane" 
+x_size="$(arg soil_length)" 
+y_size="$(arg soil_width)" 
+z_size="$(arg soil_height)" 
+weight="${soil_weight}"
+fric_mu1="$(arg soil_mu1)"
+fric_mu2="$(arg soil_mu2)"
+gazebo_material="H4R/Soil0"	
+/>
+
+	      	       	
+</robot>
