@@ -1,0 +1,20 @@
+material H4R/Soil0
+{
+        technique
+        {
+                pass
+                {
+                        ambient 0.75 0.75 0.75 1.0
+                        diffuse 0.3 0.3 0.3 1.0
+                        specular 0.1 0.1 0.1 1.0 5.5
+
+                        texture_unit
+                        {
+                                texture soil0.jpg
+                                filtering anistropic
+                                max_anisotropy 16
+                                scale 0.5 0.5
+                        }
+                }
+        }
+}
